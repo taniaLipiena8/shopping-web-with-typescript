@@ -22,17 +22,17 @@ const Home = () => {
 
 
     const fetchProducts = async () => {
-        const { products } = await getAllProducts()
+        const  products  = await getAllProducts()
         setProducts(products)
     }
 
     const fetchProductsByCategory = async (chosenCtg: string) => {
-        let { products } = await getProductByCategory(chosenCtg)
+        let products = await getProductByCategory(chosenCtg)
         setProducts(products)
     }
 
     const fetchProductsByQuery = async (keyword: string) => {
-        let { products } = await getProductByQuery(keyword)
+        let products = await getProductByQuery(keyword)
         setProducts(products)
     }
 

@@ -1,72 +1,61 @@
 import api from '../api/Base'
 import Product from '../models/Product'
 
-type getAllProductsType = {
-    products: Product[]
-}
 
-type getAllCategoriesType = {
-    categories: string[]
-}
-
-type getProductByIdType = {
-    product: Product
-}
-
-export const getAllProducts = async (): Promise<getAllProductsType> => {
+export const getAllProducts = async () => {
     try {
         const { data } = await api.get('/products')
 
         const productsList: Product[] = data.products.map((product: Product) => new Product(product))
 
-        return { products: productsList }
+        return productsList 
     } catch (error) {
         alert('Failed in fetching products')
         return Promise.reject(error)
     }
 }
 
-export const getCategories = async (): Promise<getAllCategoriesType> => {
+export const getCategories = async () => {
     try {
         const { data } = await api.get('products/categories')
 
-        return { categories: data }
+        return data 
     } catch (error) {
         alert('Failed in fetching categories')
         return Promise.reject(error)
     }
 }
 
-export const getProductByCategory = async (category: string):Promise<getAllProductsType> => {
+export const getProductByCategory = async (category: string) => {
     try {
         const {data} = await api.get(`/products/category/${category}`)
         const productsByCategoryList: Product[] = data.products.map((product: Product) => new Product(product))
 
-        return { products: productsByCategoryList }
+        return productsByCategoryList
     } catch (error) {
         alert(`Failed in fetching data in ${category} category`)
         return Promise.reject(error)
     }
 }
 
-export const getProductByQuery = async (query: string):Promise<getAllProductsType> => {
+export const getProductByQuery = async (query: string) => {
     try {
         const {data} = await api.get(`products/search?${query}`)
         const productsByQueryList: Product[] = data.products.map((product: Product) => new Product(product))
 
-        return { products: productsByQueryList }
+        return productsByQueryList
     } catch (error) {
         alert('failed in fetching data')
         return Promise.reject(error)
     }
 }
 
-export const getProductById = async (id:string|undefined) :Promise<getProductByIdType>=> {
+export const getProductById = async (id:any) => {
     try {
         const {data} = await api.get(`/products/${id}`)
         const productByID: Product = new Product(data)
 
-        return { product: productByID }
+        return productByID
     } catch (error) {
         alert(`Failed in fetching product with id ${id}`)
         return Promise.reject(error)

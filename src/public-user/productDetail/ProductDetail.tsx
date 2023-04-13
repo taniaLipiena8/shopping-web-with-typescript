@@ -23,7 +23,7 @@ const ProductDetail = () => {
     const [rating, setRating] = useState(0)
 
     const fetchProductById = useCallback(async () => {
-        let { product } = await getProductById(id)
+        let product = await getProductById(id)
         setChosenProduct(product)
         setRating(Number(product.rating))
     }, [id])

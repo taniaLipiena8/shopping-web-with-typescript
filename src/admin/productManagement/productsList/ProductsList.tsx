@@ -16,7 +16,7 @@ const ProductsList = () => {
   
 
     const fetchProducts = async () => {
-        const { products } = await getAllProducts()
+        const  products  = await getAllProducts()
         setProducts(products)
     }
 
