@@ -20,7 +20,7 @@ const AddProduct = () => {
     }
 
     const fetchCategories = async () => {
-        let { categories } = await getCategories()
+        let categories = await getCategories()
         setCategories(categories)
     }
 
