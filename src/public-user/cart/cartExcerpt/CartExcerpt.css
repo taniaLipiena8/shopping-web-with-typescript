@@ -1,5 +1,4 @@
 .cart-image {
-    padding: 20PX;
     object-fit: contain;
     height: 200px;
 }
@@ -32,6 +31,7 @@
         height: 205px;
     }
     .cart-image{
-        width: 35%;
+        max-width: 300px;
+        object-fit: scale-down;
     }
 }

@@ -7,6 +7,9 @@
 }
 
 .categories {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     border-right: 1px solid #EAE8E4;
     border-top: 1px solid #EAE8E4;
     background-color: #FFFFFF;
@@ -35,7 +38,7 @@
 .category-sidebar li p {
     display: table-cell;
     padding: 10px;
-    font-size: x-small;
+    font-size: smaller;
 
 }
 

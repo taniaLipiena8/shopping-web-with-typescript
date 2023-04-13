@@ -75,7 +75,6 @@ const Home = () => {
 
     return (
         <>
-     
             <Container className='home-container' fluid='true' style={{ margin: '30px 10px' }}>
 
                 <Row>
@@ -100,10 +99,7 @@ const Home = () => {
                 </Row>
             </Container>
         </>
-
     )
-
-
 }
 
 export default Home

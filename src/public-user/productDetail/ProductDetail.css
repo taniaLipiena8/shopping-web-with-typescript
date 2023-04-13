@@ -5,7 +5,7 @@
 
 .detail-card{
     margin-top: 50px;
-    width: 75%;
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
@@ -63,6 +63,6 @@
     }
     
     .detail-img{
-        max-width: 500px;
+        width: 430px;
     }
 }

@@ -48,7 +48,7 @@ const ProductsList = () => {
 
     return (
         <>
-            <Container fluid='true'>
+            <Container fluid='true' className="product-list">
                 <div className="AddButton">
                     <Button variant="primary" className="add-button" onClick={() => navigate('/admin/add')}>
                         + Add New Product

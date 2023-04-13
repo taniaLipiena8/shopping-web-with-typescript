@@ -1,16 +1,21 @@
-.Product-list {
-    display: grid;
-    
-
+.product-list {
+   
     padding: 0px 20px;
 }
 
 .AddButton{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .add-button{
     width: 230px;
     margin: 20px 0px
+}
+
+@media screen and (min-width: 768px){
+    .AddButton{
+        display: flex;
+        justify-content: flex-end;
+    }
 }
