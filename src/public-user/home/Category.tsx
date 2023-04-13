@@ -9,7 +9,7 @@ const Category = ({ setChosenCtg }: CategoryProps) => {
     const [categories, setCategories] = useState<string[]>([])
 
     const fetchCategories = async () => {
-        let { categories } = await getCategories()
+        let categories = await getCategories()
         setCategories(categories)
     }
 
