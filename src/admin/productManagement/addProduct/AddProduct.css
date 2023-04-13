@@ -1,33 +1,35 @@
-.add{
-    width: 95%;
-    max-width: 600px;
-    margin: 30px auto;
-    text-align: center;
-    border: 2px solid #a8aca9;
-    padding: 20px;
+.add {
+  width: 95%;
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+  border: 2px solid #a8aca9;
+  padding: 20px;
 }
 
 .add form label {
-    font-size: 1rem;
-    font-weight: bold;
-    display: block;
-    text-align: left;
-    margin: 1rem 0 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  text-align: left;
+  margin: 1rem 0 0.2rem;
 }
 
 .add input,
-select, textarea{
-    width: 100%;
-    padding: 0.65rem 0.5rem;
-    font-size: 1rem;
-    color: black;
-    border: 2px solid #a8aca9;
-    border-radius: 10px;
-    outline: none;
+select,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  color: black;
+  border: 2px solid #a8aca9;
+  border-radius: 10px;
+  outline: none;
 }
 
 .add input:focus,
-select:focus, textarea:focus {
+select:focus,
+textarea:focus {
   border-color: black;
 }
 
@@ -45,13 +47,11 @@ textarea::placeholder {
 
 .add button {
   margin-top: 20px;
-  
 }
 
-.add-btn{
+.add-btn {
   display: flex;
   justify-content: center;
-  
 }
 
 .add input.input-error,
@@ -60,14 +60,13 @@ textarea.input-error {
   border-color: #fc8181;
 }
 
-
 .add button:disabled {
   opacity: 0.35;
 }
 
 .error {
-    color: #fc8181;
-    font-size: 0.75rem;
-    text-align: left;
-    margin-top: 0.25rem;
-  }
+  color: #fc8181;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.25rem;
+}

@@ -1,37 +1,37 @@
 .cart-image {
-    object-fit: contain;
-    height: 200px;
+  object-fit: contain;
+  height: 200px;
 }
 
 .cart-amount {
-    padding: 8px 20px 12px;
-    background-color: #F8F9FA;
-    border-radius: 8px;
-    margin-top: 30px;
+  padding: 8px 20px 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 30px;
 }
 
 .cart-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .trash {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-.cartCard{
-    margin-bottom: 10px;
+.cartCard {
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
-    .cartCard {
-        display: flex;
-        flex-direction: row;
-        height: 205px;
-    }
-    .cart-image{
-        max-width: 300px;
-        object-fit: scale-down;
-    }
+  .cartCard {
+    display: flex;
+    flex-direction: row;
+    height: 205px;
+  }
+  .cart-image {
+    max-width: 300px;
+    object-fit: scale-down;
+  }
 }

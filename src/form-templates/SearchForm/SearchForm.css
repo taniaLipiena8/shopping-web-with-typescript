@@ -1,21 +1,21 @@
-.searchbar{
-    width: 150px;
+.searchbar {
+  width: 35%;
 }
 
-@media screen and (min-width: 576px){
-    .searchbar{
-        width: 200px;
-    }
+/* @media screen and (min-width: 576px) {
+  .searchbar {
+    width: 200px;
+  }
 }
 
-@media screen and (min-width: 768px){
-    .searchbar{
-        width: 400px;
-    }
+@media screen and (min-width: 768px) {
+  .searchbar {
+    width: 400px;
+  }
 }
 
-@media screen and (min-width: 992px){
-    .searchbar{
-        width: 500px;
-    }
-}
+@media screen and (min-width: 992px) {
+  .searchbar {
+    width: 500px;
+  }
+} */
