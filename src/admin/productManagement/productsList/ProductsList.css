@@ -1,0 +1,16 @@
+.Product-list {
+    display: grid;
+    
+
+    padding: 0px 20px;
+}
+
+.AddButton{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-button{
+    width: 230px;
+    margin: 20px 0px
+}

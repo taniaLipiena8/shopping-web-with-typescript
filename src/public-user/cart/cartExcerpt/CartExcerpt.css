@@ -1,0 +1,37 @@
+.cart-image {
+    padding: 20PX;
+    object-fit: contain;
+    height: 200px;
+}
+
+.cart-amount {
+    padding: 8px 20px 12px;
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.trash {
+    margin-right: 10px;
+}
+
+.cartCard{
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .cartCard {
+        display: flex;
+        flex-direction: row;
+        height: 205px;
+    }
+    .cart-image{
+        width: 35%;
+    }
+}
