@@ -32,24 +32,23 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="login" element={<Login />} />
 
-            <Route path="admin">
+            <Route path="admin/*" >
               <Route path="products" element={<PrivateRoute><ProductsList /></PrivateRoute>} />
               <Route path="add" element={<PrivateRoute><AddProduct /></PrivateRoute>} />
+              <Route path="*" element={<Navigate to={'/admin/products'} replace />} />
 
             </Route>
 
-            <Route path="products">
+            <Route path="products/*">
               <Route index element={<Home />} />
               <Route path=":id" element={<ProductDetail />} />
 
             </Route>
 
-            <Route path="cart">
+            <Route path="cart/*">
               <Route index element={<ListCart />} />
             </Route>
           </Route>
-
-
 
           <Route path="*" element={<Navigate to={'/products'} replace />} />
         </Routes>

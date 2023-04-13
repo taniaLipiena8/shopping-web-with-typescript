@@ -9,8 +9,6 @@
 .categories {
     border-right: 1px solid #EAE8E4;
     border-top: 1px solid #EAE8E4;
-    /* position: sticky;
-    top: 0; */
     background-color: #FFFFFF;
 }
 
@@ -69,7 +67,6 @@
     }
 
     .listed-products h3 {
-        font-size: large;
         display: flex;
         justify-content: start;
     }

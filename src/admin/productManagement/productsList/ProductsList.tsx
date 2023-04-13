@@ -6,13 +6,15 @@ import Product from "../../../models/Product";
 import './ProductsList.css'
 import { Container, Row } from "react-bootstrap";
 import ProductCard from "../productCard/ProductCard";
+import { INotif } from "../../../models/interfaces/NotificationInterface";
 
 
 const ProductsList = () => {
     const [products, setProducts] = useState<Product[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const [buttonId, setButtonId] = useState<string|undefined>('')
+    const [buttonId, setButtonId] = useState<string | undefined>('')
     const navigate = useNavigate()
+  
 
     const fetchProducts = async () => {
         const { products } = await getAllProducts()
@@ -24,16 +26,17 @@ const ProductsList = () => {
     }, [])
 
     const handleDelete = async (product: Product) => {
-        let {id} = product
+        let { id } = product
         setIsLoading(true)
         setButtonId(id)
         try {
             let resp = await deleteProduct(id)
             console.log(resp);
-            alert('successfully deleted product')
+            alert('Product deleted successfully')
+            
         } catch (error) {
             alert(error)
-        } finally{
+        } finally {
             setIsLoading(false)
             setButtonId('')
         }
@@ -45,7 +48,6 @@ const ProductsList = () => {
 
     return (
         <>
-
             <Container fluid='true'>
                 <div className="AddButton">
                     <Button variant="primary" className="add-button" onClick={() => navigate('/admin/add')}>
@@ -55,8 +57,8 @@ const ProductsList = () => {
                 <Row lg={5} className="justify-content-center">
                     {products.map(product => (
                         <ProductCard handleCardClick={handleCardClick} key={product.id} variant="outline-danger" product={product} handleButtonClick={handleDelete} buttonText="Delete"
-                        isLoading={isLoading}
-                        buttonId={buttonId}/>
+                            isLoading={isLoading}
+                            buttonId={buttonId} />
                     ))}
 
                 </Row>

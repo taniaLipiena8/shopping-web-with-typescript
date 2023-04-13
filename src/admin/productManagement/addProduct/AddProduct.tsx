@@ -31,8 +31,7 @@ const AddProduct = () => {
     const onSubmit = async (values: Product, actions: { resetForm: () => void; }) => {
         console.log(values);
         try {
-            const test = new Product({...values})
-            const newproduct = new Product ({...values, thumbnail: values.image})
+            const newproduct =  ({...values, thumbnail: values.image})
             let resp = await addNewProduct(newproduct)
             console.log(resp);
 

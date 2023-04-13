@@ -8,19 +8,17 @@ import Category from './Category'
 import './Home.css'
 import { useAppDispatch } from '../../features/store'
 import { cartAdded } from '../../features/cart/cartSlice'
-import { useWindowDimensions } from '../../hooks/useWindowDimensionsHook'
+
 
 const Home = () => {
-    const { height, width } = useWindowDimensions();
     const [chosenCtg, setChosenCtg] = useState('')
     const [products, setProducts] = useState<Product[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const [show, setShow] = useState(false)
+    
     const [buttonId, setButtonId] = useState<string | undefined>('')
     const [search] = useSearchParams()
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-
 
 
     const fetchProducts = async () => {
@@ -66,9 +64,9 @@ const Home = () => {
             dispatch(
                 cartAdded(id, title, desc, price, stock, image)
             )
-            alert('succesfully added to cart')
+            alert('Product successfully added to cart')
         } catch (error) {
-            alert('error in adding to cart')
+            alert('Failed in adding product to cart')
         } finally {
             setIsLoading(false)
         }
@@ -76,28 +74,33 @@ const Home = () => {
     }
 
     return (
-        <Container fluid='true' style={{ margin: '10px' }}>
-            <Row>
-                <Col xs={4} sm={2} className='categories'>
-                    <h3 >Category</h3>
+        <>
+     
+            <Container className='home-container' fluid='true' style={{ margin: '30px 10px' }}>
 
-                    {<Category setChosenCtg={setChosenCtg} />}
-                </Col>
-                <Col >
-                    <div className='listed-products'>
-                        <h3>Selected Category: {chosenCtg ? chosenCtg : 'All'}</h3>
-                        <Row lg={4} sm={1} md={2} className='public-product-list'>
-                            {products.map(product => (
-                                <ProductCard handleCardClick={gotoDetail} key={product.id} variant='outline-secondary' product={product} handleButtonClick={handleAdd} buttonText='Add to cart'
-                                    isLoading={isLoading}
-                                    buttonId={buttonId} />
-                            ))}
-                        </Row>
-                    </div>
+                <Row>
+                    <Col xs={4} sm={2} className='categories'>
+                        <h3 >Category</h3>
 
-                </Col>
-            </Row>
-        </Container>
+                        {<Category setChosenCtg={setChosenCtg} />}
+                    </Col>
+                    <Col >
+                        <div className='listed-products'>
+                            <h3>Selected Category: {chosenCtg ? chosenCtg : 'All'}</h3>
+                            <Row lg={4} sm={1} md={2} className='public-product-list'>
+                                {products.map(product => (
+                                    <ProductCard handleCardClick={gotoDetail} key={product.id} variant='outline-secondary' product={product} handleButtonClick={handleAdd} buttonText='Add to cart'
+                                        isLoading={isLoading}
+                                        buttonId={buttonId} />
+                                ))}
+                            </Row>
+                        </div>
+
+                    </Col>
+                </Row>
+            </Container>
+        </>
+
     )
 
 
