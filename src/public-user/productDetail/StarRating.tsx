@@ -26,9 +26,6 @@ const Star = ({ number}:StarProps) => {
             {[...Array(unchecked)].map((star, index) => (
                 <FaRegStar color='#FADB14' key={index} />
             ))}
-
-            
-
         </span>
     )
 }

@@ -51,6 +51,7 @@ textarea::placeholder {
 .add-btn{
   display: flex;
   justify-content: center;
+  
 }
 
 .add input.input-error,

@@ -12,7 +12,7 @@ import Product from '../../../models/Product'
 
 const AddProduct = () => {
     const [categories, setCategories] = useState<string[]>([])
-    
+
     const initialValues: Product = {
         title: '', desc: '', price: 0, stock: 0, category: '', brand: '', image: '',
         rating: 0,
@@ -31,7 +31,7 @@ const AddProduct = () => {
     const onSubmit = async (values: Product, actions: { resetForm: () => void; }) => {
         console.log(values);
         try {
-            const newproduct =  ({...values, thumbnail: values.image})
+            const newproduct = ({ ...values, thumbnail: values.image })
             let resp = await addNewProduct(newproduct)
             console.log(resp);
 
@@ -58,6 +58,7 @@ const AddProduct = () => {
 
                     <CustomInput label='Stock' name='stock' type='number' />
                     <CustomSelect label='Category' name='category' placeholder='Please pick one'>
+                    <option  value=''></option>
                         {categories.map(category => (
                             <option key={category} value={category}>{category}</option>
                         ))}
@@ -69,19 +70,17 @@ const AddProduct = () => {
                     <label htmlFor="image">Thumbnail</label>
                     <input id="image" name="image" type="file" onChange={(event) => {
                         if (!event.target.files || event.target.files.length === 0) {
-                            // you can display the error to the user
-                            console.error("Select a file");
+                            alert("Select a file");
                             return;
                         } else {
                             setFieldValue("image", event.target.files[0].name);
                         }
                     }} />
+                    
 
                     <div className='add-btn '>
-                        <Button size='lg' style={{width: '100%'}}  variant='outline-primary' type='submit' disabled={isSubmitting}>Submit</Button>
+                        <Button size='lg' style={{ width: '100%' }} variant='outline-primary' type='submit' disabled={isSubmitting}>Submit</Button>
                     </div>
-
-
                 </Form>
             )}
         </Formik>

@@ -43,6 +43,7 @@ const ProductsList = () => {
     }
 
     const handleCardClick = (id: any) => {
+        navigate('/admin/products')
     }
 
 
