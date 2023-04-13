@@ -2,7 +2,7 @@
   width: 95%;
   max-width: 400px;
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid #a8aca9;
   padding: 20px;
 }
 
@@ -27,13 +27,13 @@ form label {
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
   color: black;
-  border: 2px solid #2d3748;
+  border: 2px solid #a8aca9;
   border-radius: 10px;
   outline: none;
 }
 
 .login-form input:focus {
-  border-color: #4299e1;
+  border-color: black;
 }
 
 .login-form input::placeholder {

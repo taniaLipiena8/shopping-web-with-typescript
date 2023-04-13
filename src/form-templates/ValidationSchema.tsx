@@ -4,7 +4,7 @@ const passwordRules = new RegExp('^(?=.*[0-9])(?=.*[a-z]).{5,}$');
 
 export const loginSchema = yup.object().shape({
     username: yup.string().min(3, "Username must be at least 3 characters long").required("Required"),
-    password: yup.string().min(5).matches(passwordRules, { message: "Please create a stronger password" }).required('Password is required')
+    password: yup.string().min(5).matches(passwordRules, { message: "Password must include lower or upper case letters and a number" }).required('Password is required')
 })
 
 export const addSchema = yup.object().shape({
