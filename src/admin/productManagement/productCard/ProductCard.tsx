@@ -30,7 +30,7 @@ const ProductCard = ({ handleCardClick, variant, product, handleButtonClick, but
                     </Card.Text>
                 </div>
                 <div className='div-button'>
-                    <Button className='card-btn' variant={variant} onClick={() => handleButtonClick(product)}>{isLoading &&buttonId === product.id? <LoadingSpin/> : buttonText }</Button>
+                    <Button className='card-btn' variant={variant} onClick={() => handleButtonClick(product)} disabled={isLoading}>{isLoading &&buttonId === product.id? <LoadingSpin/> : buttonText }</Button>
                 </div>
             </Card.Body>
         </Card>
