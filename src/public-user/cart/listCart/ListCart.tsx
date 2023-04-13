@@ -10,7 +10,6 @@ import "./ListCart.css";
 import CartExcerpt from "../cartExcerpt/CartExcerpt";
 
 const ListCart = () => {
-
   const carts = useAppSelector((state) => state.carts.cartItems);
 
   const dispatch = useAppDispatch();
@@ -28,48 +27,59 @@ const ListCart = () => {
   };
 
   return (
-    <Container
-      fluid="true"
-      style={{ margin: "30px" }}
-      className="page-container"
-    >
-      <h1>Shopping Cart</h1>
-      <Row className="justify-content-center row-container">
-        <Col lg={9} className="cart-details">
-          {carts.map((cart) => (
-            <CartExcerpt
-              cart={cart}
-              handleDelete={handleDelete}
-              handleIncrease={handleIncrease}
-              handleDecreased={handleDecreased}
-              key={cart.id}
-            />
-          ))}
-        </Col>
-        <Col lg={3} className="total-sidebar">
-          <h4>
-            Total Items:{" "}
-            {carts.reduce((total, cart) => total + cart.quantity, 0)}
-          </h4>
-          <br></br>
-          <div className="list-cart-summary">
-            {carts.map((cart, index) => (
-              <p className="total-summary" key={cart.id}>
-                <span>
-                  {index + 1}. {cart.title}
-                </span>
-                <span>X {cart.quantity}</span>
-              </p>
-            ))}
-          </div>
+    <>
+      <Container
+        fluid="true"
+        style={{ margin: "30px" }}
+        className="page-container"
+      >
+        {carts.length > 0 ? (
+          <>
+            <h1>Shopping Cart</h1>
+            <Row className="justify-content-center row-container">
+              <Col lg={9} className="cart-details">
+                {carts.map((cart) => (
+                  <CartExcerpt
+                    cart={cart}
+                    handleDelete={handleDelete}
+                    handleIncrease={handleIncrease}
+                    handleDecreased={handleDecreased}
+                    key={cart.id}
+                  />
+                ))}
+              </Col>
+              <Col lg={3} className="total-sidebar">
+                <h4>
+                  Total Items:{" "}
+                  {carts.reduce((total, cart) => total + cart.quantity, 0)}
+                </h4>
+                <br></br>
+                <div className="list-cart-summary">
+                  {carts.map((cart, index) => (
+                    <p className="total-summary" key={cart.id}>
+                      <span>
+                        {index + 1}. {cart.title}
+                      </span>
+                      <span>X {cart.quantity}</span>
+                    </p>
+                  ))}
+                </div>
 
-          <h5>
-            Total Price: $
-            {carts.reduce((total, cart) => total + cart.price * cart.quantity,0 )}
-          </h5>
-        </Col>
-      </Row>
-    </Container>
+                <h5>
+                  Total Price: $
+                  {carts.reduce(
+                    (total, cart) => total + cart.price * cart.quantity,
+                    0
+                  )}
+                </h5>
+              </Col>
+            </Row>
+          </>
+        ) : (
+          <h1>Your cart is empty</h1>
+        )}
+      </Container>
+    </>
   );
 };
 

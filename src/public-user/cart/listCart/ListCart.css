@@ -1,3 +1,9 @@
+.page-container h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
 .row-container {
   height: 100%;
   display: flex;
