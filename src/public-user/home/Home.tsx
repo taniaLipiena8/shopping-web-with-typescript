@@ -77,7 +77,7 @@ const Home = () => {
         <>
             <Container className='home-container' fluid='true' style={{ margin: '30px 10px' }}>
                 <Row>
-                    <Col xs={4} sm={2} className='categories'>
+                    <Col xs={4} sm={3} md={2} className='categories'>
                         <h3 >Category</h3>
                         {<Category setChosenCtg={setChosenCtg} />}
                     </Col>
