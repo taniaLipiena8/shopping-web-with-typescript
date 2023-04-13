@@ -6,7 +6,6 @@ import Product from "../../../models/Product";
 import './ProductsList.css'
 import { Container, Row } from "react-bootstrap";
 import ProductCard from "../productCard/ProductCard";
-import { INotif } from "../../../models/interfaces/NotificationInterface";
 
 
 const ProductsList = () => {
