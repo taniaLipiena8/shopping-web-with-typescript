@@ -6,6 +6,8 @@ import Product from "../../models/Product";
 import { Card } from "react-bootstrap";
 import "./ProductDetail.css";
 import Star from "./StarRating";
+import { useAppDispatch } from "../../features/store";
+import { cartAdded } from "../../features/cart/cartSlice";
 
 const ProductDetail = () => {
   const initProduct: Product = {
@@ -21,6 +23,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [chosenProduct, setChosenProduct] = useState<Product>(initProduct);
   const [rating, setRating] = useState(0);
+  const dispatch = useAppDispatch();
 
   const fetchProductById = useCallback(async () => {
     let product = await getProductById(id);
@@ -31,6 +34,16 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchProductById();
   }, [fetchProductById]);
+
+  const handleAdd = (product: Product) => {
+    const { id, title, desc, price, stock, image } = product;
+    try {
+      dispatch(cartAdded(id, title, desc, price, stock, image));
+      alert("Product successfully added to cart");
+    } catch (error) {
+      alert("Failed in adding product to cart");
+    } 
+  };
 
   return (
     <div className="detail-container">
@@ -59,7 +72,7 @@ const ProductDetail = () => {
           </div>
 
           <div className="div-button">
-            <Button className="add-btn" variant="primary">
+            <Button className="add-btn" variant="primary" onClick={()=>handleAdd(chosenProduct)}>
               Add to cart
             </Button>
           </div>
