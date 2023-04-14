@@ -1,16 +1,13 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-type PrivateRouteProps = {
-  children: JSX.Element;
-};
 
 function PrivateRoute() {
   const auth = localStorage.getItem("username");
-
+  const location = useLocation();
   return auth ? (
     <Outlet />
   ) : (
-    <Navigate to="/login"  replace />
+    <Navigate to="/login" state={{ from: location }} replace />
   );
 }
 

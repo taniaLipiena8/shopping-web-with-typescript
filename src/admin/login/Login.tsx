@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import CustomInput from "../../form-templates/CustomInput";
 import { Button } from "react-bootstrap";
-import { IUser, IUserLogin } from "../../models/interfaces/UserInterfaces";
+import { IUserLogin } from "../../models/interfaces/UserInterfaces";
 import "./Login.css";
 import { loginSchema } from "../../form-templates/ValidationSchema";
-import loginapi from "../../api/loginApi";
+import { loginUser } from "../../services/UserServices";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,23 +16,13 @@ const Login = () => {
     actions: { resetForm: () => void }
   ) => {
     try {
-      const { data } = await loginapi.post("/perpustakaan/api/v1/user/login", {
-        email: values.email,
-        password: values.password,
-      });
-      console.log(data);
-      
-      localStorage.setItem("username", data.data.username);
+      const { username } = await loginUser(values);
+      localStorage.setItem("username", username);
       navigate("/admin/products", { replace: true });
     } catch (error) {
-      if (error instanceof Error) {
-        // ✅ TypeScript knows error is Error
-        alert(error.message);
-      } else {
-        console.log("Unexpected error", error);
-      }
-    } finally {
-      actions.resetForm();
+      alert(error);
+    } finally{
+      actions.resetForm()
     }
   };
 

@@ -1,6 +1,3 @@
-export interface IUser {
-  username: string;
-}
 
 
 export interface IUserLogin{
@@ -8,6 +5,3 @@ export interface IUserLogin{
   password: string
 }
 
-export interface LoginData{
-  data:IUser
-}
