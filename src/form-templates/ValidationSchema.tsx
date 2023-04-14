@@ -3,10 +3,9 @@ import * as yup from "yup";
 const passwordRules = new RegExp("^(?=.*[0-9])(?=.*[a-z]).{5,}$");
 
 export const loginSchema = yup.object().shape({
-  username: yup
+  email: yup
     .string()
-    .min(3, "Username must be at least 3 characters long")
-    .required("Required"),
+    .email("Please enter a valid email").required("Email is required"),
   password: yup
     .string()
     .min(5)

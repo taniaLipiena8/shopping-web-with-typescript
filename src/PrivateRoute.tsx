@@ -1,16 +1,17 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 type PrivateRouteProps = {
   children: JSX.Element;
 };
 
-function PrivateRoute({ children }: PrivateRouteProps) {
+function PrivateRoute() {
   const auth = localStorage.getItem("username");
 
-  if (!auth) {
-    return <Navigate to="/login" />;
-  }
-  return children;
+  return auth ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login"  replace />
+  );
 }
 
-export { PrivateRoute };
+export default PrivateRoute;

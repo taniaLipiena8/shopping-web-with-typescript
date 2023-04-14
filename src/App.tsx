@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Layout from "./layout-template/Layout/Layout";
 import UserContextProvider from "./context/UserContext";
-import { PrivateRoute } from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 import ProductsList from "./admin/productManagement/productsList/ProductsList";
 import AddProduct from "./admin/productManagement/addProduct/AddProduct";
 import Home from "./public-user/home/Home";
@@ -38,9 +38,15 @@ function App() {
             <Route path="login" element={<Login />} />
 
             <Route path="admin/*">
-              <Route path="products" element={<PrivateRoute><ProductsList /></PrivateRoute>}/>
-              <Route path="add" element={<PrivateRoute><AddProduct /></PrivateRoute>}/>
-              <Route path="*" element={<Navigate to={"/admin/products"} replace />}/>
+              <Route element={<PrivateRoute />}>
+                <Route path="products" element={<ProductsList />} />
+                <Route path="add" element={<AddProduct />} />
+              </Route>
+
+              <Route
+                path="*"
+                element={<Navigate to={"/admin/products"} replace />}
+              />
             </Route>
 
             <Route path="products/*">

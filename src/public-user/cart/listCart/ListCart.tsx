@@ -4,13 +4,15 @@ import {
   cartAdded,
   quantityDecreased,
   quantityIncreased,
+  selectAllCarts,
 } from "../../../features/cart/cartSlice";
 import { Row, Col, Container } from "react-bootstrap";
 import "./ListCart.css";
 import CartExcerpt from "../cartExcerpt/CartExcerpt";
+import { Cart } from "../../../models/interfaces/CartInterfaces";
 
 const ListCart = () => {
-  const carts = useAppSelector((state) => state.carts.cartItems);
+  const carts: Cart[] = useAppSelector(selectAllCarts);
 
   const dispatch = useAppDispatch();
 

@@ -2,18 +2,38 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import CustomInput from "../../form-templates/CustomInput";
 import { Button } from "react-bootstrap";
-import { IUser } from "../../models/interfaces/UserInterfaces";
+import { IUser, IUserLogin } from "../../models/interfaces/UserInterfaces";
 import "./Login.css";
 import { loginSchema } from "../../form-templates/ValidationSchema";
+import loginapi from "../../api/loginApi";
 
 const Login = () => {
   const navigate = useNavigate();
-  const initialValues: IUser = { username: "", password: "" };
+  const initialValues: IUserLogin = { email: "", password: "" };
 
-  const onSubmit = (values: IUser, actions: { resetForm: () => void }) => {
-    localStorage.setItem("username", values.username);
-    actions.resetForm();
-    navigate("/admin/products", { replace: true });
+  const onSubmit = async (
+    values: IUserLogin,
+    actions: { resetForm: () => void }
+  ) => {
+    try {
+      const { data } = await loginapi.post("/perpustakaan/api/v1/user/login", {
+        email: values.email,
+        password: values.password,
+      });
+      console.log(data);
+      
+      localStorage.setItem("username", data.data.username);
+      navigate("/admin/products", { replace: true });
+    } catch (error) {
+      if (error instanceof Error) {
+        // ✅ TypeScript knows error is Error
+        alert(error.message);
+      } else {
+        console.log("Unexpected error", error);
+      }
+    } finally {
+      actions.resetForm();
+    }
   };
 
   return (
@@ -27,10 +47,10 @@ const Login = () => {
           <Form className="login-form">
             <h1>Login</h1>
             <CustomInput
-              label="Username"
-              name="username"
+              label="Email"
+              name="email"
               type="text"
-              placeholder="Enter your username"
+              placeholder="Enter your email"
             />
 
             <CustomInput
