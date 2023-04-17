@@ -6,9 +6,10 @@ export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email("Please enter a valid email").required("Email is required"),
+    
   password: yup
     .string()
-    .min(5)
+    .min(5,"password must be at least 5 characters long")
     .matches(passwordRules, {
       message: "Password must include lower or upper case letters and a number",
     })
@@ -20,12 +21,16 @@ export const addSchema = yup.object().shape({
     .string()
     .min(5, "Title must be at least 5 characters long")
     .required("Required"),
+
   desc: yup
     .string()
     .min(10, "Description is too short")
     .required("Description is required"),
+
   price: yup.number().positive("Must be more than 0").required("Required"),
+
   stock: yup.number().positive("Must be more than 0").required("Required"),
+
   category: yup
     .string()
     .oneOf(
@@ -54,9 +59,11 @@ export const addSchema = yup.object().shape({
       "Please pick one of the select options"
     )
     .required("Required"),
+
   brand: yup
     .string()
     .min(2, "Brand must be at least 2 characters long")
     .required("Required"),
-  image: yup.mixed().required("Required"),
+
+  image: yup.string().required("Required"),
 });
