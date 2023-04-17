@@ -5,7 +5,7 @@ import {
   getProductByCategory,
   getProductByQuery,
 } from "../../services/ProductsServices";
-import ProductCard from "../../admin/productManagement/productCard/ProductCard";
+import ProductCard from "../../reusable-components/productCard/ProductCard";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Product from "../../models/Product";
 import { Col, Container, Row } from "react-bootstrap";

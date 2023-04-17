@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import api from "../api/Base";
 import Product from "../models/Product";
 
@@ -5,11 +6,19 @@ export const getAllProducts = async () => {
   try {
     const { data } = await api.get("/products");
 
-    const productsList: Product[] = data.products.map( (product: Product) => new Product(product));
+    const productsList: Product[] = data.products.map(
+      (product: Product) => new Product(product)
+    );
 
     return productsList;
   } catch (error) {
-    alert("Failed in fetching products");
+    if (error instanceof AxiosError) {
+      console.log(error);
+      alert("Failed in fetching products");
+    } else {
+      console.log("Unexpected error", error);
+    }
+
     return Promise.reject(error);
   }
 };
@@ -20,7 +29,13 @@ export const getCategories = async () => {
 
     return data;
   } catch (error) {
-    alert("Failed in fetching categories");
+    if (error instanceof AxiosError) {
+      console.log(error);
+      alert("Failed in fetching categories");
+    } else {
+      console.log("Unexpected error", error);
+    }
+
     return Promise.reject(error);
   }
 };
@@ -28,11 +43,19 @@ export const getCategories = async () => {
 export const getProductByCategory = async (category: string) => {
   try {
     const { data } = await api.get(`/products/category/${category}`);
-    const productsByCategoryList: Product[] = data.products.map((product: Product) => new Product(product));
+    const productsByCategoryList: Product[] = data.products.map(
+      (product: Product) => new Product(product)
+    );
 
     return productsByCategoryList;
   } catch (error) {
-    alert(`Failed in fetching data in ${category} category`);
+    if (error instanceof AxiosError) {
+      console.log(error);
+      alert(`Failed in fetching data in ${category} category`);
+    } else {
+      console.log("Unexpected error", error);
+    }
+
     return Promise.reject(error);
   }
 };
@@ -40,11 +63,18 @@ export const getProductByCategory = async (category: string) => {
 export const getProductByQuery = async (query: string) => {
   try {
     const { data } = await api.get(`products/search?${query}`);
-    const productsByQueryList: Product[] = data.products.map((product: Product) => new Product(product));
+    const productsByQueryList: Product[] = data.products.map(
+      (product: Product) => new Product(product)
+    );
 
     return productsByQueryList;
   } catch (error) {
-    alert("failed in fetching data");
+    if (error instanceof AxiosError) {
+      console.log(error);
+      alert("failed in fetching data");
+    } else {
+      console.log("Unexpected error", error);
+    }
     return Promise.reject(error);
   }
 };
@@ -56,7 +86,12 @@ export const getProductById = async (id: any) => {
 
     return productByID;
   } catch (error) {
-    alert(`Failed in fetching product with id ${id}`);
+    if (error instanceof AxiosError) {
+      console.log(error);
+      alert(`Failed in fetching product with id ${id}`);
+    } else {
+      console.log("Unexpected error", error);
+    }
     return Promise.reject(error);
   }
 };
@@ -67,6 +102,8 @@ export const addNewProduct = async (newProduct: Product) => {
     alert("product added");
     return Promise.resolve(response.data);
   } catch (error) {
+    console.log(error);
+
     return Promise.reject("Failed in adding product");
   }
 };
@@ -77,6 +114,7 @@ export const deleteProduct = async (id: any) => {
 
     return Promise.resolve(data);
   } catch (error) {
+    console.log(error);
     return Promise.reject("Failed in deleting product");
   }
 };

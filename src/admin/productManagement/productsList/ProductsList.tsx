@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Product from "../../../models/Product";
 import "./ProductsList.css";
 import { Container, Row } from "react-bootstrap";
-import ProductCard from "../productCard/ProductCard";
+import ProductCard from "../../../reusable-components/productCard/ProductCard";
 
 const ProductsList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -18,6 +18,7 @@ const ProductsList = () => {
 
   const fetchProducts = async () => {
     const products = await getAllProducts();
+    
     setProducts(products);
   };
 

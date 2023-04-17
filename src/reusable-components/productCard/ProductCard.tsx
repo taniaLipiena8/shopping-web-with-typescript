@@ -1,8 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Product from "../../../models/Product";
+import Product from "../../models/Product";
 import "./ProductCard.css";
-import LoadingSpin from "../../../reusable-components/LoadingSpin";
+import LoadingSpin from "../LoadingSpin";
 
 interface ProductCardProps {
   handleCardClick: (id: any) => void;
