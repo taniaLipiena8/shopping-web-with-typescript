@@ -10,7 +10,7 @@ export const getAllProducts = async () => {
       (product: Product) => new Product(product)
     );
 
-    return productsList;
+    return Promise.resolve(productsList);
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error);
@@ -26,8 +26,10 @@ export const getAllProducts = async () => {
 export const getCategories = async () => {
   try {
     const { data } = await api.get("products/categories");
-
-    return data;
+    const formattedCtg = data.map((category: string) => {
+      return category.includes("-") ? category.replace("-", " ") : category;
+    });
+    return Promise.resolve(formattedCtg);
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error);
@@ -47,7 +49,7 @@ export const getProductByCategory = async (category: string) => {
       (product: Product) => new Product(product)
     );
 
-    return productsByCategoryList;
+    return Promise.resolve(productsByCategoryList);
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error);
@@ -67,7 +69,7 @@ export const getProductByQuery = async (query: string) => {
       (product: Product) => new Product(product)
     );
 
-    return productsByQueryList;
+    return Promise.resolve(productsByQueryList);
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error);
@@ -84,7 +86,7 @@ export const getProductById = async (id: any) => {
     const { data } = await api.get(`/products/${id}`);
     const productByID: Product = new Product(data);
 
-    return productByID;
+    return Promise.resolve(productByID);
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error);

@@ -10,6 +10,7 @@ const Category = ({ setChosenCtg }: CategoryProps) => {
 
   const fetchCategories = async () => {
     let categories = await getCategories();
+    
     setCategories(categories);
   };
 

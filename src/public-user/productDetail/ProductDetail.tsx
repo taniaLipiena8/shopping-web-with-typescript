@@ -8,6 +8,7 @@ import "./ProductDetail.css";
 import Star from "./StarRating";
 import { useAppDispatch } from "../../features/store";
 import { cartAdded } from "../../features/cart/cartSlice";
+import { Loading } from "../../reusable-components/LoadingSpin";
 
 const ProductDetail = () => {
   const initProduct: Product = {
@@ -24,11 +25,14 @@ const ProductDetail = () => {
   const [chosenProduct, setChosenProduct] = useState<Product>(initProduct);
   const [rating, setRating] = useState(0);
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchProductById = useCallback(async () => {
+    setIsLoading(true);
     let product = await getProductById(id);
     setChosenProduct(product);
     setRating(Number(product.rating));
+    setIsLoading(false);
   }, [id]);
 
   useEffect(() => {
@@ -42,42 +46,55 @@ const ProductDetail = () => {
       alert("Product successfully added to cart");
     } catch (error) {
       alert("Failed in adding product to cart");
-    } 
+    }
   };
 
   return (
     <div className="detail-container">
-      <Card className="detail-card">
-        <Card.Img className="detail-img" src={chosenProduct.image} />
-        <Card.Body>
-          <h1 className="title">{chosenProduct.title}</h1>
-          <p className="price">${chosenProduct.price}</p>
-          <div>
-            <Star number={rating} key={chosenProduct.id} />
-            <span className="rating"> {chosenProduct.rating} </span>
-            <span className="divider">|</span>
-            <span className="stock"> Stock: {chosenProduct.stock}</span>
+      {isLoading ? (
+        <>
+          <div className="loading">
+            <h3>Please wait...</h3>
+            <Loading />
           </div>
+        </>
+      ) : (
+        <Card className="detail-card">
+          <Card.Img className="detail-img" src={chosenProduct.image} />
+          <Card.Body>
+            <h1 className="title">{chosenProduct.title}</h1>
+            <p className="price">${chosenProduct.price}</p>
+            <div>
+              <Star number={rating} key={chosenProduct.id} />
+              <span className="rating"> {chosenProduct.rating} </span>
+              <span className="divider">|</span>
+              <span className="stock"> Stock: {chosenProduct.stock}</span>
+            </div>
 
-          <div className="tags-contain">
-            <span>Tags</span>
-            <br></br>
-            <div className="tags">{chosenProduct.brand} </div>
-            <div className="tags"> {chosenProduct.category}</div>
-          </div>
-          <div>
-            <span>Product Description</span>
-            <br></br>
-            <p>{chosenProduct.desc}</p>
-          </div>
+            <div className="tags-contain">
+              <span>Tags</span>
+              <br></br>
+              <div className="tags">{chosenProduct.brand} </div>
+              <div className="tags"> {chosenProduct.category}</div>
+            </div>
+            <div>
+              <span>Product Description</span>
+              <br></br>
+              <p>{chosenProduct.desc}</p>
+            </div>
 
-          <div className="div-button">
-            <Button className="add-btn" variant="primary" onClick={()=>handleAdd(chosenProduct)}>
-              Add to cart
-            </Button>
-          </div>
-        </Card.Body>
-      </Card>
+            <div className="div-button">
+              <Button
+                className="add-btn"
+                variant="primary"
+                onClick={() => handleAdd(chosenProduct)}
+              >
+                Add to cart
+              </Button>
+            </div>
+          </Card.Body>
+        </Card>
+      )}
     </div>
   );
 };

@@ -1,3 +1,10 @@
+.loading{
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .detail-container {
   display: flex;
   justify-content: center;
@@ -29,7 +36,7 @@
 .tags {
   background-color: gray;
   margin-right: 10px;
-  padding: 3px 3px;
+  padding: 3px 8px;
   border-radius: 8px;
   text-align: center;
   color: aliceblue;

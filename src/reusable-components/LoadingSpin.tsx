@@ -5,3 +5,7 @@ const LoadingSpin = () => {
 };
 
 export default LoadingSpin;
+
+export const Loading =()=>{
+  return <Spinner animation="border" />;
+}
