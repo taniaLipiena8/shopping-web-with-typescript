@@ -70,7 +70,7 @@ const cartsSlice = createSlice({
   },
 });
 
-export const selectAllCarts = (state: { carts: { cartItems: Cart[]; }; }) => state.carts.cartItems
+export const selectAllCarts = (state: { carts: CartState }) => state.carts.cartItems
 
 export const { cartAdded, deleteCart, quantityIncreased, quantityDecreased } =
   cartsSlice.actions;

@@ -12,7 +12,7 @@ import CartExcerpt from "../cartExcerpt/CartExcerpt";
 import { Cart } from "../../../models/interfaces/CartInterfaces";
 
 const ListCart = () => {
-  const carts: Cart[] = useAppSelector(selectAllCarts);
+  const carts: Cart[] = useAppSelector((selectAllCarts));
 
   const dispatch = useAppDispatch();
 
