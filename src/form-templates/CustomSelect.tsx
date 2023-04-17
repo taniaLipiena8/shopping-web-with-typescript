@@ -5,8 +5,6 @@ const CustomSelect = ({ label, ...props }: CustomFormProps) => {
   const [field, meta] = useField(props);
   return (
     <>
-    {console.log(field)
-    }
       <label>{label}</label>
       <Field
         as="select"

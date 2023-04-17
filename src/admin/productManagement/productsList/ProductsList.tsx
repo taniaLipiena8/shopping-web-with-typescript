@@ -53,7 +53,12 @@ const ProductsList = () => {
     <>
       <Container fluid="true" className="product-list">
         {pageLoading ? (
-          <Loading />
+          <>
+          <div className="loading">
+            <h3>Please wait...</h3>
+            <Loading />
+          </div>
+        </>
         ) : (
           <div>
             <div className="AddButton">

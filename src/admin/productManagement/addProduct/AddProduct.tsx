@@ -70,7 +70,7 @@ const AddProduct = () => {
           <CustomSelect label="Category" name="category"placeholder="Please pick one">
             <option value=""></option>
             {categories.map((category) => (
-              <option key={category} value={category}>
+              <option key={category} value={category.replace(" ", "-")}>
                 {category}
               </option>
             ))}
