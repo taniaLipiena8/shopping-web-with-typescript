@@ -9,7 +9,9 @@ const SearchForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const text = e.target.value;
-
+    // setTimeout(() => {
+    //   fetchProductsByQuery(search.toString().trim())
+    // }, 1000)
     if (text.length === 0) {
       search.delete("q");
       setSearch(search, {
@@ -17,14 +19,16 @@ const SearchForm = () => {
       });
     } else {
       search.set("q", text);
-      setSearch(search, {
-        replace: true,
-      });
+      setTimeout(() => {
+        setSearch(search, {
+          replace: true,
+        });
+      }, 1000);
     }
   };
-  
+
   return (
-    <Form className="searchbar" style={{width:'35%'}}>
+    <Form className="searchbar" style={{ width: "35%" }}>
       <Form.Control
         type="search"
         placeholder="Search your product here"

@@ -55,10 +55,6 @@
 }
 
 @media screen and (min-width: 992px) {
-  .public-product-list {
-    justify-content: left;
-  }
-
   .categories h3 {
     font-size: 1.75rem;
   }
@@ -71,8 +67,4 @@
     font-size: medium;
   }
 
-  .listed-products h3 {
-    display: flex;
-    justify-content: flex-start;
-  }
 }

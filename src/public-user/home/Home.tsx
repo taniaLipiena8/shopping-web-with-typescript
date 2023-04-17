@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  deleteProduct,
   getAllProducts,
   getProductByCategory,
   getProductByQuery,
@@ -47,7 +46,7 @@ const Home = () => {
 
   useEffect(() => {
     if (search.toString()) {
-      fetchProductsByQuery(search.toString().trim());
+      fetchProductsByQuery(search.toString().trim())
     } else {
       
       fetchProducts();
