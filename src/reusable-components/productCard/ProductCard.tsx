@@ -38,13 +38,15 @@ const ProductCard = ({
             onClick={() => handleCardClick(product.id)}
           >
             <Card.Text className="product-title">{product.title}</Card.Text>
-            <Card.Title
-              className="product-price"
-              style={{ fontWeight: "bold" }}
-            >
-              ${product.price}
-            </Card.Title>
-            <Card.Text className="product-brand">{product.brand}</Card.Text>
+            <div>
+              <Card.Title
+                className="product-price"
+                style={{ fontWeight: "bold" }}
+              >
+                ${product.price}
+              </Card.Title>
+              <Card.Text className="product-brand">{product.brand}</Card.Text>
+            </div>
           </div>
           <div className="div-button">
             <Button

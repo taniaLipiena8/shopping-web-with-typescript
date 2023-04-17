@@ -33,7 +33,7 @@ const Login = () => {
         onSubmit={onSubmit}
         validationSchema={loginSchema}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, dirty, isValid }) => (
           <Form className="login-form">
             <h1>Login</h1>
             <CustomInput
@@ -54,7 +54,7 @@ const Login = () => {
               className="login"
               variant="success"
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !isValid || !dirty}
             >
               Login
             </Button>

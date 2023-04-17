@@ -4,6 +4,7 @@
   padding: 0px;
   display: table;
   height: 100vh;
+  
 }
 
 .categories {
@@ -72,6 +73,6 @@
 
   .listed-products h3 {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
