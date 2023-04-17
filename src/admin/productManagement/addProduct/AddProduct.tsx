@@ -55,7 +55,7 @@ const AddProduct = () => {
       onSubmit={onSubmit}
       validationSchema={addSchema}
     >
-      {({ isSubmitting, setFieldValue }) => (
+      {({ isSubmitting, setFieldValue, isValid, dirty }) => (
         <Form className="add">
           <h2>Add Product</h2>
 
@@ -99,7 +99,7 @@ const AddProduct = () => {
               style={{ width: "100%" }}
               variant="outline-primary"
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !isValid || !dirty}
             >
               Submit
             </Button>

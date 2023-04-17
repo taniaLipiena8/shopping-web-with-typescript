@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../../features/store";
 import {
   deleteCart,
-  cartAdded,
   quantityDecreased,
   quantityIncreased,
   selectAllCarts,

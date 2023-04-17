@@ -18,6 +18,7 @@
 
 .list-cart-summary {
   border-bottom: 1px solid #eae8e4;
+  display: none;
 }
 
 .total-sidebar {
@@ -29,6 +30,10 @@
   font-weight: bold;
 }
 
+.cart-details {
+  overflow-y: scroll;
+}
+
 @media screen and (min-width: 992px) {
   .cart-details {
     height: 75vh;
@@ -36,6 +41,7 @@
   }
 
   .list-cart-summary {
+    display: block;
     height: 60vh;
     overflow-y: scroll;
     padding-right: 5px;

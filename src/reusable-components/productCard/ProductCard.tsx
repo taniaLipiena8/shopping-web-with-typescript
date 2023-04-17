@@ -31,27 +31,35 @@ const ProductCard = ({
         src={product.image}
         onClick={() => handleCardClick(product.id)}
       />
-      <Card.Body>
-        <div className="card-text" onClick={() => handleCardClick(product.id)}>
-          <Card.Text className="product-title">{product.title}</Card.Text>
-          <Card.Title className="product-price" style={{ fontWeight: "bold" }}>
-            ${product.price}
-          </Card.Title>
-          <Card.Text className="product-brand">{product.brand}</Card.Text>
-        </div>
-        <div className="div-button">
-          <Button
-            className="card-btn"
-            variant={variant}
-            onClick={() => handleButtonClick(product)}
-            disabled={isLoading}
+      <Card.Body className="card_body">
+        <div className="product-body">
+          <div
+            className="card-text"
+            onClick={() => handleCardClick(product.id)}
           >
-            {isLoading && buttonId === product.id ? (
-              <LoadingSpin />
-            ) : (
-              buttonText
-            )}
-          </Button>
+            <Card.Text className="product-title">{product.title}</Card.Text>
+            <Card.Title
+              className="product-price"
+              style={{ fontWeight: "bold" }}
+            >
+              ${product.price}
+            </Card.Title>
+            <Card.Text className="product-brand">{product.brand}</Card.Text>
+          </div>
+          <div className="div-button">
+            <Button
+              className="card-btn"
+              variant={variant}
+              onClick={() => handleButtonClick(product)}
+              disabled={isLoading}
+            >
+              {isLoading && buttonId === product.id ? (
+                <LoadingSpin />
+              ) : (
+                buttonText
+              )}
+            </Button>
+          </div>
         </div>
       </Card.Body>
     </Card>
