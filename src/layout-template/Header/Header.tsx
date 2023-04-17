@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { UserContext, UserContextType } from "../../context/UserContext";
 import logo from "../../images/logo_cart.png";
-import SearchForm from "../../form-templates/SearchForm/SearchForm";
+import SearchForm from "../../form-templates/SearchForm";
 
 const Header = () => {
   const location = useLocation();

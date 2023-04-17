@@ -49,9 +49,10 @@ const Home = () => {
     if (search.toString()) {
       fetchProductsByQuery(search.toString().trim());
     } else {
-      setChosenCtg("");
+      
       fetchProducts();
     }
+    setChosenCtg("");
   }, [search]);
 
   const gotoDetail = (id: any) => {

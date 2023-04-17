@@ -1,7 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import React from "react";
-import "./SearchForm.css";
 
 const SearchForm = () => {
   const [search, setSearch] = useSearchParams();
@@ -24,7 +23,7 @@ const SearchForm = () => {
     }
   };
   return (
-    <Form className="searchbar">
+    <Form className="searchbar" style={{width:'35%'}}>
       <Form.Control
         type="search"
         placeholder="Search your product here"
