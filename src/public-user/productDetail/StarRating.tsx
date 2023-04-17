@@ -6,9 +6,9 @@ type StarProps = {
 };
 
 const Star = ({ number }: StarProps) => {
-  let checked = Number(Math.floor(number));
+  let checked = (Math.floor(number));
   let remainder = (number - checked).toFixed(2);
-  let unchecked = 5 - Number(checked);
+  let unchecked = 5 - (checked);
   let half = false;
   if (Number(remainder) > 0.5) {
     unchecked--;

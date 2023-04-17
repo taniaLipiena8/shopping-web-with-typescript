@@ -22,6 +22,7 @@ const SearchForm = () => {
       });
     }
   };
+  
   return (
     <Form className="searchbar" style={{width:'35%'}}>
       <Form.Control

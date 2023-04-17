@@ -13,7 +13,7 @@
 .detail-img {
   object-fit: contain;
 
-  max-height: 351px;
+  max-height: 200px;
 }
 
 .tags-contain div {
@@ -63,5 +63,6 @@
 
   .detail-img {
     width: 430px;
+    max-height: 351px;
   }
 }
