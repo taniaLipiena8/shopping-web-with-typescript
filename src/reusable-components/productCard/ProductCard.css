@@ -35,7 +35,7 @@
   object-fit: cover;
 }
 
-.card-text {
+.card_text {
   margin-bottom: 10px;
   height: min-content;
   display: flex;

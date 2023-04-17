@@ -67,5 +67,6 @@
   .detail-img {
     width: 430px;
     max-height: 351px;
+    margin-right: 30px;
   }
 }

@@ -34,7 +34,7 @@ const ProductCard = ({
       <Card.Body className="card_body">
         <div className="product-body">
           <div
-            className="card-text"
+            className="card_text"
             onClick={() => handleCardClick(product.id)}
           >
             <Card.Text className="product-title">{product.title}</Card.Text>
