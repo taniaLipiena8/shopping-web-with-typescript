@@ -43,7 +43,7 @@ const Home = () => {
 
   useEffect(() => {
     if (chosenCtg !== "") {
-      fetchProductsByCategory(chosenCtg);
+      fetchProductsByCategory(chosenCtg.replace(" ", "-"));
     }
   }, [chosenCtg]);
 
