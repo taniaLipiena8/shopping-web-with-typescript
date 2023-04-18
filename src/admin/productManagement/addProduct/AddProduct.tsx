@@ -84,11 +84,11 @@ const AddProduct = () => {
             name="image"
             type="file"
             onChange={(event) => {
-              if (!event.target.files || event.target.files.length === 0) {
+              if (!event.currentTarget.files || event.currentTarget.files.length === 0) {
                 alert("Select a file");
                 return;
               } else {
-                setFieldValue("image", event.target.files[0].name);
+                setFieldValue("image", event.currentTarget.files[0].name);
               }
             }}
           />

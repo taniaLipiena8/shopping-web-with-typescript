@@ -90,7 +90,7 @@ export const getProductById = async (id: any) => {
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error);
-      alert(`Failed in fetching product with id ${id}`);
+      alert(error.response?.data.message);
     } else {
       console.log("Unexpected error", error);
     }

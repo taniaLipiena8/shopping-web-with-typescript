@@ -17,8 +17,7 @@ const cartsSlice = createSlice({
 
         if (itemExist >= 0) {
           state.cartItems[itemExist] = {
-            ...state.cartItems[itemExist],
-            quantity: state.cartItems[itemExist].quantity + 1,
+            ...state.cartItems[itemExist], quantity: state.cartItems[itemExist].quantity + 1,
           };
         } else {
           state.cartItems.push(action.payload);

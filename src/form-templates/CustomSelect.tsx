@@ -1,4 +1,4 @@
-import { Field, useField } from "formik";
+import { ErrorMessage, Field, useField } from "formik";
 import { CustomFormProps } from "./IProps";
 
 const CustomSelect = ({ label, ...props }: CustomFormProps) => {
@@ -13,7 +13,7 @@ const CustomSelect = ({ label, ...props }: CustomFormProps) => {
         className={meta.touched && meta.error ? "input-error" : ""}
       />
 
-      {meta.touched && meta.error && <div className="error">{meta.error}</div>}
+      <ErrorMessage name={field.name} className="error">{(msg) => <div className="error">{msg}</div>}</ErrorMessage>
     </>
   );
 };

@@ -9,9 +9,7 @@ const SearchForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const text = e.target.value;
-    // setTimeout(() => {
-    //   fetchProductsByQuery(search.toString().trim())
-    // }, 1000)
+  
     if (text.length === 0) {
       search.delete("q");
       setSearch(search, {
