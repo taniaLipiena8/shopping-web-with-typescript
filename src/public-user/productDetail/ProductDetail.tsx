@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect,} from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../services/ProductsServices";
 import Button from "react-bootstrap/Button";
@@ -25,19 +25,19 @@ const ProductDetail = () => {
   const [chosenProduct, setChosenProduct] = useState<Product>(initProduct);
   const [rating, setRating] = useState(0);
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchProductById = useCallback(async () => {
-    setIsLoading(true);
-    let product = await getProductById(id);
-    setChosenProduct(product);
-    setRating(Number(product.rating));
-    setIsLoading(false);
-  }, [id]);
+  const [pageLoading, setPageLoading] = useState(false);
 
   useEffect(() => {
-    fetchProductById();
-  }, [fetchProductById]);
+    const fetchProductById =async () => {
+      setPageLoading(true);
+      let product = await getProductById(id);
+      setChosenProduct(product);
+      setRating(Number(product.rating));
+      setPageLoading(false);
+    }
+
+    fetchProductById()
+  }, [id]);
 
   const handleAdd = (product: Product) => {
     const { id, title, desc, price, stock, image } = product;
@@ -51,7 +51,7 @@ const ProductDetail = () => {
 
   return (
     <div className="detail-container">
-      {isLoading ? (
+      {pageLoading ? (
         <>
           <div className="loading">
             <h3>Please wait...</h3>
@@ -72,8 +72,6 @@ const ProductDetail = () => {
             </div>
 
             <div className="tags-contain">
-              <span>Tags</span>
-              <br></br>
               <div className="tags">{chosenProduct.brand} </div>
               <div className="tags"> {chosenProduct.category}</div>
             </div>

@@ -42,7 +42,8 @@ const Header = () => {
                 onClick={() => navigate("/products")}className="logo">
                 <img src={logo} alt="" />
               </Navbar.Brand>
-              <SearchForm />
+              {location.pathname==='/products' && <SearchForm />}
+              
 
               <Nav.Item>
                 <Link className="cartBut" to={"/cart"}>

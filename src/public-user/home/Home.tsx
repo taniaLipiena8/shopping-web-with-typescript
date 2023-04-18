@@ -18,16 +18,17 @@ const Home = () => {
   const [chosenCtg, setChosenCtg] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(false);
   const [buttonId, setButtonId] = useState<string | undefined>("");
   const [search] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const fetchProducts = async () => {
-    setIsLoading(true);
+    setPageLoading(true);
     const products = await getAllProducts();
     setProducts(products);
-    setIsLoading(false);
+    setPageLoading(false);
   };
 
   const fetchProductsByCategory = async (chosenCtg: string) => {
@@ -79,7 +80,7 @@ const Home = () => {
         fluid="true"
         style={{ margin: "30px 10px" }}
       >
-        {isLoading ? (
+        {pageLoading ? (
           <div className="loading">
           <h3>Please wait...</h3>
           <Loading />
