@@ -5,7 +5,7 @@
 }
 
 .card-image:hover,
-.card-text:hover {
+.card_text:hover {
   cursor: pointer;
 }
 
